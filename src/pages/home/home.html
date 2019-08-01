@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      NoteFy
+    </ion-title>
+    <ion-buttons left>
+        <button ion-button strong (click)="logout()" >
+          <ion-icon name="log-out" ></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-buttons end >
+      <button ion-button strong (click)="showNotificationModal()" >
+        <ion-icon name="add" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item-divider *ngIf="labelCloudStorage">
+        <ion-label *ngIf="auth.getEmail()">Cloud Storage: {{auth.getEmail()}}</ion-label>
+        <ion-toggle (ionChange)="onToggle($event)" [(ngModel)]="cloud"></ion-toggle>
+      </ion-item-divider>
+      <ion-item-divider *ngIf="labelNoCloudStorage">
+          <ion-label>Log In to access Cloud!</ion-label>
+      </ion-item-divider>
+    <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="hide">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+      </ion-refresher>
+  <ion-list [virtualScroll]="notifications" #virtualScroll approxItemHeight="50px">
+    
+    <button class="item ion-item" ion-item *virtualItem="let notification" (click)="showNotificationModal(notification)">
+      {{notification.title}}
+      <br>
+      {{notification.content}}
+      <br>
+      {{notification.date | date: "h:mm, EEEE, MMMM d, y "}}
+    </button>
+
+  </ion-list>
+</ion-content>

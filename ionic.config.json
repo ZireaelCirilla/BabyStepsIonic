@@ -1,0 +1,7 @@
+{
+  "name": "NotiFy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

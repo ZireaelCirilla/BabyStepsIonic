@@ -1,0 +1,16 @@
+page-content {
+    .bar-buttons-md[end]{
+        margin-right: 1%;
+    }
+    textarea.text-input { 
+        display: block; height: 200px; 
+    }
+    .scroll-content {
+        overflow: hidden;
+      }
+    
+      ion-list {
+        overflow-y: auto;
+        max-height: 72vh;
+      }
+}
